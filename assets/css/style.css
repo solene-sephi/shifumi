@@ -1,0 +1,51 @@
+/* html, body {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+} */
+
+/* ==============================================
+Introduction
+=================================================*/
+h1,
+h2 {
+    text-align: center;
+}
+
+
+/* ==============================================
+Choix de l'arme
+=================================================*/
+
+.containerChooseWeapon {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.containerListWeapons {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* pour que le bouton soit aligné en bas sur le texte */
+.containerChooseWeapon ul,
+.containerListWeapons li,
+.containerListWeapons p {
+    margin: 0rem;
+}
+
+.containerListWeapons li {
+    display: inline-block;
+}
+
+.containerButton {
+    margin: auto 0 0 0;
+}
+
+.weaponSelectedStyle {
+    border: 2px solid blue;
+}
+
