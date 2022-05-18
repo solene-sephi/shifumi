@@ -61,13 +61,15 @@ h1 {
 
 li#rockHand,
 li#paperHand,
-li#scissorsHand {
+li#scissorsHand,
+li#princessPeach {
     padding : 0.2rem;
 }
 
 li#rockHand img,
 li#paperHand img,
-li#scissorsHand img {
+li#scissorsHand img,
+li#princessPeach img {
     display: block;
     margin: 0rem auto;
 }
@@ -102,7 +104,8 @@ li#scissorsHand img {
 }
 
 #fightButton:hover {
-    height: 37.5px;
+    border : none;
+    background-color: rgb(239, 62, 36);
 }
 
 /* ==============================================
@@ -118,3 +121,20 @@ Zone de combat
     flex-direction: row;
     justify-content: center;
 }
+
+#containerFight img {
+    display: block;
+}
+
+.mariosSpace {
+    position: relative;
+    top : 50px;
+
+}
+
+
+.groundBackground {
+    position: relative;
+    top : 140px;
+}
+

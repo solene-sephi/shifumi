@@ -57,14 +57,18 @@ $("#fightButton").on('click', () => {
     // Si armes similaires, égalité
     if (((rockPlayer === true) && (randomWeapon === 'rock')) || ((paperPlayer === true) && (randomWeapon === 'paper')) || ((scissorsPlayer=== true) && (randomWeapon === 'scissors'))) {
         $("#displayResult p").replaceWith("<p>Vous êtes à égalité !</p>");
+        $("#marioStanding").attr('src','assets/img/marioStanding.png');
+
     }
     // Si arme du joueur plus faible, défaite
     else if (((rockPlayer === true) && (randomWeapon === 'paper')) || ((paperPlayer === true) && (randomWeapon === 'scissors')) || ((scissorsPlayer === true) && (randomWeapon === 'rock'))) {
         $("#displayResult p").replaceWith("<p>Vous avez perdu !</p>");
+        $("#marioStanding").attr('src','assets/img/marioStanding.png');
     }
     // Sinon, victoire
     else {
         $("#displayResult p").replaceWith("<p>Vous avez gagné !</p>");
+        $("#marioStanding").attr('src','assets/img/marioWinner.png');
     }
 })
 
