@@ -51,17 +51,28 @@ $("#fightButton").on('click', () => {
     const computerWeapons = ['rock', 'paper', 'scissors'];
     // Choix aléatoire une arme dans le tableau pour l'ordinateur
     let randomWeapon = computerWeapons[Math.floor(Math.random() * computerWeapons.length)]
-    console.log(randomWeapon);
+    $("#displayRandomWeapon p").replaceWith("<p>L'ordinateur a choisi : " + "" + randomWeapon + "</p>");
 
     // Comparaison des armes du joueur et de l'ordinateur
     // Si armes similaires, égalité
     if (((rockPlayer === true) && (randomWeapon === 'rock')) || ((paperPlayer === true) && (randomWeapon === 'paper')) || ((scissorsPlayer=== true) && (randomWeapon === 'scissors'))) {
-        console.log('égalité');
+        $("#displayResult p").replaceWith("<p>Vous êtes à égalité !</p>");
     }
+    // Si arme du joueur plus faible, défaite
     else if (((rockPlayer === true) && (randomWeapon === 'paper')) || ((paperPlayer === true) && (randomWeapon === 'scissors')) || ((scissorsPlayer === true) && (randomWeapon === 'rock'))) {
-        console.log('défaite');
+        $("#displayResult p").replaceWith("<p>Vous avez perdu !</p>");
     }
+    // Sinon, victoire
     else {
-        console.log('victoire')
+        $("#displayResult p").replaceWith("<p>Vous avez gagné !</p>");
     }
 })
+
+// Au survol du bouton, 
+$("#fightButton").on('mouseover', () => {
+    $("#yellowCoin").show(400);
+})
+$("#fightButton").on('mouseout', () => {
+    $("#yellowCoin").hide(400);
+})
+
