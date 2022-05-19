@@ -9,69 +9,77 @@
 Général
 =================================================*/
 @font-face {
-    font-family: "chlorinp";
-    src: url(../font/CHLORINP.TTF);
+    font-family: "supermario256";
+    src: url(../font/SuperMario256.ttf);
+}
+
+@font-face {
+    font-family: "supermarioworld";
+    src: url(../font/SuperMarioWorld.ttf);
 }
 
 body {
     background-color: #000;
     color: #fff;
     margin: 0rem;
-    padding : 0rem;
+    padding: 0rem;
+    font-family: "supermarioworld", Arial, serif;
+    letter-spacing: 0.2rem;
 }
 
 
 /* ==============================================
 Choix de l'arme
 =================================================*/
-h1 {
-    text-align: center;
-    font-family: "chlorinp", Arial, serif;
-    letter-spacing: 1rem;
-    font-size: 3rem;
-    color: rgb(249, 161, 76);
-}
 
 /*Container principal (qui contient Container des armes et Container du bouton */
 .containerChooseWeapon {
     display: flex;
     justify-content: space-evenly;
-    font-family: "chlorinp", Arial, serif;
     letter-spacing: 0.5rem;
+    padding: 1rem 0rem 2rem 0rem;
 }
 
-/* Container des armes */
-.containerListWeapons {
-    flex-basis: 60%;
+h1 {
+    font-family: "supermario256", Arial, serif;
+    letter-spacing: 1rem;
+    font-size: 2.5rem;
+    color: rgb(249, 161, 76);
+}
+
+.rockHand,
+.paperHand,
+.scissorsHand,
+.princessPeach,
+.standOnCoin {
+    padding : 0.2rem;
+    border-top: 5px solid #000;
+    border-bottom: 5px solid #000;
+}
+
+.rockHand img,
+.paperHand img,
+.scissorsHand img,
+.princessPeach img,
+.standOnCoin img {
+    display: block;
+    margin: 0rem auto;
+}
+
+.standOnCoin {
+    align-self: flex-end;
     display: flex;
-    justify-content: space-around;
-    text-align: center;
-}
-
-/* pour que le bouton soit aligné en bas sur le texte */
-.containerChooseWeapon ul,
-.containerListWeapons li {
-    padding: 0rem;
-    margin: 0rem;
-}
-
-.containerListWeapons li {
-    display: inline-block;
-}
-
-li#rockHand,
-li#paperHand,
-li#scissorsHand,
-li#princessPeach {
+    flex-direction: column;
+    align-items: center;
+    border-top: 5px solid #000;
+    border-bottom: 5px solid #000;
     padding : 0.2rem;
 }
 
-li#rockHand img,
-li#paperHand img,
-li#scissorsHand img,
-li#princessPeach img {
-    display: block;
-    margin: 0rem auto;
+#yellowCoin1,
+#yellowCoin2 {
+    display: none;
+    margin-bottom : 0.5rem;
 }
 
 .weaponSelectedStyle {
@@ -79,18 +87,6 @@ li#princessPeach img {
     border-bottom: 5px solid rgb(249, 161, 76);
 }
 
-/* Container du bouton */
-.containerButton {
-    margin: auto 0 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#yellowCoin {
-    display: none;
-    margin-bottom : 1.5rem;
-}
 
 #fightButton {
     height: 25px;
@@ -108,33 +104,77 @@ li#princessPeach img {
     background-color: rgb(239, 62, 36);
 }
 
+
+
+/* ==============================================
+Zone de compteurs
+=================================================*/
+
+.containerResults {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+
 /* ==============================================
 Zone de combat
 =================================================*/
 
-#containerFight {
-    position : absolute;
-    bottom : 0rem;
-    right: 50%;
-    left :50%;
+.containerFight {
+    position: relative;
+    top: 4rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: baseline;
 }
 
-#containerFight img {
+.centerSpace {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top : 2rem;
+}
+
+.containerFight img {
     display: block;
 }
 
-.mariosSpace {
-    position: relative;
-    top : 50px;
-
+#marioStanding {
+    margin: 0 auto;
 }
 
-
-.groundBackground {
-    position: relative;
-    top : 140px;
+#marioSelectedWeapon {
+    display: none;
+    position: absolute;
+    bottom: 12rem;
+    left: 2rem;
 }
+
+#bowserSelectedWeapon {
+    display: none;
+    position: absolute;
+    bottom: 12rem;
+    right: 2rem;  
+}
+
+/* Container qui affiche le gagnant */
+.displayWinner {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    position: relative;
+    top: 2rem;
+}
+
+.displayWinner p {
+    margin: auto 1rem;
+    font-size: 2rem;
+    color: rgb(239, 62, 36)
+}
+
 

@@ -19,7 +19,23 @@
             joueur ciseaux / ordi feuille = victoire
     4- Afficher le résultat aléatoire de l'arme de l'ordinateur
     5- Afficher le résultat du jeu : victoire, défaite, égalité
+
+    2 victoires 6 parties
+    x           100 parties 
 */
+
+
+// Déclaration d'un tableau qui liste les armes disponibles pour l'ordinateur
+const computerWeapons = ['rock', 'paper', 'scissors'];
+
+// déclaration d'une variable quand il y a une victoire
+let OneVictory;
+
+// Déclaration des variables pour le compteur de victoires,  défaites et le pourcentage
+let victoryCount = 0;
+let defeatCount = 0;
+let equalityCount = 0;
+let percentageVictories = 0;
 
 // Au click sur une des armes, une class 'weaponSelected' affichant une border est ajoutée à cette arme et retirée des autres armes
 $("#rockHand").on('click', () => {
@@ -27,56 +43,111 @@ $("#rockHand").on('click', () => {
     $("#paperHand").removeClass("weaponSelectedStyle");
     $("#scissorsHand").removeClass("weaponSelectedStyle");
 })
-
 $("#paperHand").on('click', () => {
     $("#paperHand").addClass("weaponSelectedStyle");
     $("#rockHand").removeClass("weaponSelectedStyle");
     $("#scissorsHand").removeClass("weaponSelectedStyle");
 })
-
 $("#scissorsHand").on('click', () => {
     $("#scissorsHand").addClass("weaponSelectedStyle");
     $("#rockHand").removeClass("weaponSelectedStyle");
     $("#paperHand").removeClass("weaponSelectedStyle");
 })
 
+
 // Au clic sur le bouton de jeu,
 $("#fightButton").on('click', () => {
+
     // Déclaration des variables pour l'arme choisie par le joueur (donc qui a la class 'weaponSelected')
     const rockPlayer = $("#rockHand").hasClass("weaponSelectedStyle");
     const paperPlayer = $("#paperHand").hasClass("weaponSelectedStyle");
     const scissorsPlayer = $("#scissorsHand").hasClass("weaponSelectedStyle");
-    
-    // Déclaration d'un tableau qui liste les armes disponibles pour l'ordinateur
-    const computerWeapons = ['rock', 'paper', 'scissors'];
+
     // Choix aléatoire une arme dans le tableau pour l'ordinateur
     let randomWeapon = computerWeapons[Math.floor(Math.random() * computerWeapons.length)]
-    $("#displayRandomWeapon p").replaceWith("<p>L'ordinateur a choisi : " + "" + randomWeapon + "</p>");
 
     // Comparaison des armes du joueur et de l'ordinateur
+    // Si pas d'arme sélectionnée par le joueur
+    if ((rockPlayer === false) && (paperPlayer === false) && (scissorsPlayer === false)) {
+        $(".displayWinner p").replaceWith("<p>Select a weapon first</p>");
+    }
     // Si armes similaires, égalité
-    if (((rockPlayer === true) && (randomWeapon === 'rock')) || ((paperPlayer === true) && (randomWeapon === 'paper')) || ((scissorsPlayer=== true) && (randomWeapon === 'scissors'))) {
-        $("#displayResult p").replaceWith("<p>Vous êtes à égalité !</p>");
-        $("#marioStanding").attr('src','assets/img/marioStanding.png');
+    else if (((rockPlayer === true) && (randomWeapon === 'rock')) || ((paperPlayer === true) && (randomWeapon === 'paper')) || ((scissorsPlayer === true) && (randomWeapon === 'scissors'))) {
+        $(".displayWinner p").replaceWith("<p>No winner</p>");
+        // Mario reste ou se remet en position neutre
+        $("#marioStanding").attr('src', 'assets/img/marioStanding.png');
+        // On incrémente le nombre de parties à égalité
+        equalityCount++;
+        // Calcul et affichage du pourcentage de victoire
+        percentageVictories = (victoryCount * 100 / (victoryCount + defeatCount + equalityCount)).toFixed(0)
+        $(".averageVictories").replaceWith("<p class='averageVictories'>" + percentageVictories + " "+"%</p>")
 
     }
     // Si arme du joueur plus faible, défaite
     else if (((rockPlayer === true) && (randomWeapon === 'paper')) || ((paperPlayer === true) && (randomWeapon === 'scissors')) || ((scissorsPlayer === true) && (randomWeapon === 'rock'))) {
-        $("#displayResult p").replaceWith("<p>Vous avez perdu !</p>");
-        $("#marioStanding").attr('src','assets/img/marioStanding.png');
+        $(".displayWinner p").replaceWith("<p>Bowser wins</p>");
+        // Mario reste ou se remet en position neutre
+        $("#marioStanding").attr('src', 'assets/img/marioLooser.png');
+        // On incrémente le nombre de défaites et on l'affiche
+        defeatCount++;
+        $(".numberOfDefeats").replaceWith("<p class='numberOfDefeats'>" + defeatCount + "</p>");
+        // Calcul et affichage du pourcentage de victoire
+        percentageVictories = (victoryCount * 100 / (victoryCount + defeatCount + equalityCount)).toFixed(0)
+        $(".averageVictories").replaceWith("<p class='averageVictories'>" + percentageVictories + " "+"%</p>")
+
     }
     // Sinon, victoire
     else {
-        $("#displayResult p").replaceWith("<p>Vous avez gagné !</p>");
-        $("#marioStanding").attr('src','assets/img/marioWinner.png');
+        $(".displayWinner p").replaceWith("<p>Mario wins</p>");
+        // Mario se met en position de victoire
+        $("#marioStanding").attr('src', 'assets/img/marioWinner.png');
+        // On incrémente le nombre de victoires et on l'affiche
+        victoryCount++;
+        $(".numberOfVictories").replaceWith("<p class='numberOfVictories'>" + victoryCount + "</p>");
+        // Calcul et affichage du pourcentage de victoire
+        percentageVictories = (victoryCount * 100 / (victoryCount + defeatCount + equalityCount)).toFixed(0)
+        $(".averageVictories").replaceWith("<p class='averageVictories'>" + percentageVictories + " "+"%</p>")
+
+    }
+
+
+    // Affichage des choix d'armes 
+    // Pour Mario
+    if (rockPlayer === true) {
+        $("#marioSelectedWeapon").attr('src', 'assets/img/rockHand.png').show(400);
+    }
+    else if (paperPlayer === true) {
+        $("#marioSelectedWeapon").attr('src', 'assets/img/paperHand.png').show(400);
+    }
+    else if (scissorsPlayer === true) {
+        $("#marioSelectedWeapon").attr('src', 'assets/img/scissorsHand.png').show(400);
+    }
+    else { }
+
+    // Pour Bowser
+    if (randomWeapon === 'rock') {
+        $("#bowserSelectedWeapon").attr('src', 'assets/img/rockHand.png').show(400);
+    }
+    else if (randomWeapon === 'paper') {
+        $("#bowserSelectedWeapon").attr('src', 'assets/img/paperHand.png').show(400);
+    }
+    else if (randomWeapon === 'scissors') {
+        $("#bowserSelectedWeapon").attr('src', 'assets/img/scissorsHand.png').show(400);
     }
 })
 
-// Au survol du bouton, 
-$("#fightButton").on('mouseover', () => {
-    $("#yellowCoin").show(400);
+
+// Au survol des deux barres, une pièce apparait
+$(".coinPoping1").on('mouseover', () => {
+    $("#yellowCoin1").show(400);
 })
-$("#fightButton").on('mouseout', () => {
-    $("#yellowCoin").hide(400);
+$(".coinPoping1").on('mouseout', () => {
+    $("#yellowCoin1").hide(400);
+})
+$(".coinPoping2").on('mouseover', () => {
+    $("#yellowCoin2").show(400);
+})
+$(".coinPoping2").on('mouseout', () => {
+    $("#yellowCoin2").hide(400);
 })
 

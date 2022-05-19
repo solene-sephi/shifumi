@@ -10,56 +10,81 @@
 
 <body>
 
-    <h1>Shifumi</h1>
     <div class="containerChooseWeapon">
-        <ul class="containerListWeapons">
-            <li id="princessPeach">
-                <img src="assets/img/peachHelp.png" alt="princesse peach pixelisée">
-                <img src="assets/img/standOnBackground.png" alt="">
-
-            </li>
-            <li id="rockHand">
-                <img src="assets/img/rockHand.png" alt="main avec poing fermé">
-                <img src="assets/img/standOnBackground.png" alt="">
-            </li>
-            <li id="paperHand">
-                <img src="assets/img/paperHand.png" alt="main avec paume ouverte">
-                <img src="assets/img/standOnBackground.png" alt="">
-            </li>
-            <li id="scissorsHand">
-                <img src="assets/img/scissorsHand.png" alt="main avec deux doigts levés">
-                <img src="assets/img/standOnBackground.png" alt="">
-            </li>
-        </ul>
-        <div class="containerButton">
-            <img id="yellowCoin" src="assets/img/yellowCoin.png" alt="pièce jaune">
-            <button id="fightButton" type="button">Shifumi !</button>
+        <div class="standOnCoin">
+            <img id="yellowCoin1" src="assets/img/yellowCoin.png" alt="pièce jaune">
+            <img class="coinPoping1" src="assets/img/standOnBackground.png" alt="">
+        </div>
+        <div id="princessPeach" class="princessPeach">
+            <img src="assets/img/peachHelp.png" alt="princesse peach pixelisée">
+            <img src="assets/img/standOnBackground.png" alt="">
+        </div>
+        <div id="rockHand" class="rockHand">
+            <img src="assets/img/rockHand.png" alt="main avec poing fermé">
+            <img src="assets/img/standOnBackground.png" alt="">
+        </div>
+        <div id="paperHand" class="paperHand">
+            <img src="assets/img/paperHand.png" alt="main avec paume ouverte">
+            <img src="assets/img/standOnBackground.png" alt="">
+        </div>
+        <div id="scissorsHand" class="scissorsHand">
+            <img src="assets/img/scissorsHand.png" alt="main avec deux doigts levés">
+            <img src="assets/img/standOnBackground.png" alt="">
+        </div>
+        <div class="standOnCoin">
+            <img id="yellowCoin2" src="assets/img/yellowCoin.png" alt="pièce jaune">
+            <img class="coinPoping2" src="assets/img/standOnBackground.png" alt="">
         </div>
     </div>
-    <div class="containerResults">
-        <div id="displayRandomWeapon">
-            <p></p>
-        </div>
-        <div id="displayResult">
-            <p></p>
-        </div>
 
-        <div id="containerFight">
-            <div class="mariosSpace">
+    <div class="containerButton">
+        <button id="fightButton" type="button">Shifumi !</button>
+    </div>
+
+    <div class="containerResults">
+        <div>
+            <p>Mario</p>
+            <p class="numberOfVictories">0</p>
+        </div>
+        <div>
+            <p>Bowser</p>
+            <p class="numberOfDefeats">0</p>
+        </div>
+        <div>
+            <p>Victories</p>
+            <p class="averageVictories">0 %</p>
+        </div>
+    </div>
+
+
+    <div class="containerFight">
+        <div>
+            <div id="mariosSpace">
                 <img id="marioStanding" src="assets/img/marioStanding.png" alt="">
                 <img src="assets/img/columnBackground.png" alt="">
             </div>
+        </div>
 
-            <div>
-                <img class="groundBackground" src="assets/img/groundBackground.png" alt="">
+        <div class="centerSpace">
+            <div id="fightSpace">
+                <img id="marioSelectedWeapon" src="assets/img/rockHand.png" alt="">
+                <img src="assets/img/groundBackground.png" alt="">
+                <img id="bowserSelectedWeapon" src="assets/img/rockHand.png" alt="">
+            </div>
+            <div class="displayWinner">
+                <img src="assets/img/star.png" alt="">
+                <p>Choose a weapon</p>
+                <img src="assets/img/star.png" alt="">
             </div>
 
-            <div>
-                <img src="assets/img/bowserStanding.png" alt="bowser">
-                <img src="assets/img/columnBackground.png" alt="">
-            </div>
+
+        </div>
+        <div>
+            <img id="bowserStanding" src="assets/img/bowserStanding.png" alt="bowser">
+            <img src="assets/img/columnBackground.png" alt="">
         </div>
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
