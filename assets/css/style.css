@@ -1,9 +1,10 @@
-/* html, body {
+html,
+body {
     font-size: 100%;
     margin: 0;
     padding: 0;
     border: 0;
-} */
+}
 
 /* ==============================================
 Général
@@ -21,8 +22,6 @@ Général
 body {
     background-color: #000;
     color: #fff;
-    margin: 0rem;
-    padding: 0rem;
     font-family: "supermarioworld", Arial, serif;
     letter-spacing: 0.2rem;
     overflow-y: hidden;
@@ -92,7 +91,6 @@ Choix de l'arme
     font-size: 2rem;
     justify-content: center;
     padding: .75rem 1.65rem;
-    position: relative;
     text-align: center;
     width: 100%;
     position: relative;
@@ -198,7 +196,7 @@ Zone de combat
 ================================================================*/
 
 .displayWinOrLoose {
-    display: none; 
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -206,8 +204,8 @@ Zone de combat
     transform: translate(-50%, -50%);
     /* centrage :décalage de 50% de sa propre taille */
     z-index: 1;
-    height: 94%;
-    width: 94%;
+    height: 87%;
+    width: 87%;
     background-color: #000;
     border: dashed 15px rgb(239, 62, 36);
     font-family: "supermarioworld", Arial, serif;
@@ -220,6 +218,7 @@ Zone de combat
     padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .finalScores {
@@ -228,4 +227,51 @@ Zone de combat
     justify-content: space-around;
 }
 
+.superPlayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.superPlayer img {
+    display: block;
+    height: 50px;
+    width: auto;
+    margin: auto 2rem;
+}
+
+
+.button-54 {
+    background-color: rgb(239, 62, 36);
+    box-sizing: border-box;
+    color: #000000;
+    letter-spacing: 1rem;
+    font-family: "supermarioworld", Arial, serif;
+    font-size: 2rem;
+    padding: .75rem 1.65rem;
+    text-align: center;
+    width: 20rem;
+    height: 8rem;
+    transform: rotate(10deg);
+    position: relative;
+    top: 8rem;
+}
+
+.button-54:focus {
+    outline: 0;
+}
+
+.button-54:after {
+    content: '';
+    position: absolute;
+    border: 3px solid rgb(249, 161, 76);
+    bottom: 6px;
+    left: 6px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+.button-54:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
