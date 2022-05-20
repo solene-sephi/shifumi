@@ -25,6 +25,7 @@ body {
     padding: 0rem;
     font-family: "supermarioworld", Arial, serif;
     letter-spacing: 0.2rem;
+    overflow-y: hidden;
 }
 
 
@@ -35,32 +36,24 @@ Choix de l'arme
 /*Container principal (qui contient Container des armes et Container du bouton */
 .containerChooseWeapon {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     letter-spacing: 0.5rem;
-    padding: 1rem 0rem 2rem 0rem;
+    padding: 1.5rem 0rem 2rem 0rem;
 }
 
-h1 {
-    font-family: "supermario256", Arial, serif;
-    letter-spacing: 1rem;
-    font-size: 2.5rem;
-    color: rgb(249, 161, 76);
-}
 
 .rockHand,
 .paperHand,
 .scissorsHand,
-.princessPeach,
 .standOnCoin {
-    padding : 0.2rem;
-    border-top: 5px solid #000;
-    border-bottom: 5px solid #000;
+    padding: 0.2rem;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
 }
 
 .rockHand img,
 .paperHand img,
 .scissorsHand img,
-.princessPeach img,
 .standOnCoin img {
     display: block;
     margin: 0rem auto;
@@ -73,37 +66,58 @@ h1 {
     align-items: center;
     border-top: 5px solid #000;
     border-bottom: 5px solid #000;
-    padding : 0.2rem;
+    padding: 0.2rem;
 }
 
 #yellowCoin1,
 #yellowCoin2 {
     display: none;
-    margin-bottom : 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .weaponSelectedStyle {
-    border-top: 5px solid rgb(249, 161, 76);
-    border-bottom: 5px solid rgb(249, 161, 76);
+    border-top: 3px solid rgb(249, 161, 76);
+    border-bottom: 3px solid rgb(249, 161, 76);
+    transform: scale(1.2);
 }
 
 
-#fightButton {
-    height: 25px;
-    width: 100px;
-    border-top : 4px solid #fff;
-    border-bottom: 4px solid rgb(239, 62, 36);
-    border-right : none;
-    border-left : none;
-    background-color: rgb(249, 161, 76);
-    font-weight: bold;
-}
-
-#fightButton:hover {
-    border : none;
+.button-53 {
     background-color: rgb(239, 62, 36);
+    box-sizing: border-box;
+    color: #000000;
+    display: flex;
+    letter-spacing: 1rem;
+    font-family: "supermarioworld", Arial, serif;
+    font-size: 2rem;
+    justify-content: center;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 2rem;
+    transform: rotate(10deg);
 }
 
+.button-53:focus {
+    outline: 0;
+}
+
+.button-53:after {
+    content: '';
+    position: absolute;
+    border: 3px solid rgb(249, 161, 76);
+    bottom: 6px;
+    left: 6px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+.button-53:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
 
 
 /* ==============================================
@@ -113,8 +127,10 @@ Zone de compteurs
 .containerResults {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     text-align: center;
+    padding: 3rem;
+    font-size: 1.5rem;
 }
 
 
@@ -124,7 +140,7 @@ Zone de combat
 
 .containerFight {
     position: relative;
-    top: 4rem;
+    top: -4rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -137,7 +153,7 @@ Zone de combat
     flex-direction: column;
     align-items: center;
     position: relative;
-    top : 2rem;
+    top: 2rem;
 }
 
 .containerFight img {
@@ -159,7 +175,7 @@ Zone de combat
     display: none;
     position: absolute;
     bottom: 12rem;
-    right: 2rem;  
+    right: 2rem;
 }
 
 /* Container qui affiche le gagnant */
@@ -174,7 +190,42 @@ Zone de combat
 .displayWinner p {
     margin: auto 1rem;
     font-size: 2rem;
-    color: rgb(239, 62, 36)
+    color: rgb(239, 62, 36);
+}
+
+/* ============================================================
+ Affichage de quel joueur est le gagnant final
+================================================================*/
+
+.displayWinOrLoose {
+    display: none; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* centrage : à 50%/50% du parent référent */
+    transform: translate(-50%, -50%);
+    /* centrage :décalage de 50% de sa propre taille */
+    z-index: 1;
+    height: 94%;
+    width: 94%;
+    background-color: #000;
+    border: dashed 15px rgb(239, 62, 36);
+    font-family: "supermarioworld", Arial, serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.displayFinalWinner {
+    padding: 2rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.finalScores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 
